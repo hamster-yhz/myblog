@@ -59,7 +59,7 @@ export const siteConfig: SiteConfig = {
 
   // 页面开关配置 - 控制特定页面的访问权限
   pages: {
-    anime: true, // 追番页面开关，设为false时访问/anime/会返回404
+    anime: false, // 追番页面开关，设为false时访问/anime/会返回404
     projects: true, // 项目展示页面开关，设为false时访问/projects/会返回404
     timeline: true, // 时间线页面开关，设为false时访问/timeline/会返回404
     skills: true, // 技能页面开关，设为false时访问/skills/会返回404
@@ -104,7 +104,7 @@ export const siteConfig: SiteConfig = {
         // 主页显示自定义文本（全局开关）
         enable: true,
         // 主页横幅主标题
-        title: "Lovely firefly!",
+        title: "Welcom to my Blog!",
         // 主页横幅副标题
         subtitle: [
           "In Reddened Chrysalis, I Once Rest",
@@ -127,11 +127,11 @@ export const siteConfig: SiteConfig = {
           mobile: false, // 移动端显示横幅图片来源文本
         },
         text: {
-          desktop: "晚晚喵", // 桌面端要显示的来源文本
+          desktop: "hamster-yhz", // 桌面端要显示的来源文本
           mobile: "Mobile Credit", // 移动端要显示的来源文本
         },
         url: {
-          desktop: "https://www.pixiv.net/artworks/135490046", // 桌面端原始艺术品或艺术家页面的 URL 链接
+          desktop: "", // 桌面端原始艺术品或艺术家页面的 URL 链接
           mobile: "", // 移动端原始艺术品或艺术家页面的 URL 链接
         },
       },
