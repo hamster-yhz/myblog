@@ -1,44 +1,49 @@
-name: Deploy to Pages Branch
+name: Deploy
 
 on:
-  # 每次推送到 `main` 分支时触发这个"工作流程"
-  # 如果你使用了别的分支名，请按需将 `main` 替换成你的分支名
+  # 1. 当代码推送到 main 分支时自动触发
   push:
-    branches: [ main ]
-  # 允许你在 GitHub 上的 Actions 标签中手动触发此"工作流程"
+    branches:
+      - deploy
+      
+  # 2. 允许在 Actions 页面手动触发
   workflow_dispatch:
 
-# 需要写入权限来推送到pages分支
-permissions:
-  contents: write
-
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout your repository using git
+      # 第 1 步：检出代码
+      - name: Checkout Code
         uses: actions/checkout@v4
-      
+
+      # 第 2 步：安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      # 第 3 步：设置 Node.js 环境，并指定缓存 pnpm 的依赖
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+          cache: 'pnpm' # 缓存 pnpm 的 store
+
+      # 第 4 步：安装依赖并构建项目
+      - name: Install dependencies and Build
+        run: |
+          pnpm install
+          pnpm build
+
+      # 第 5 步：通过 FTP 部署到服务器
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          version: 9.14.4
-          run_install: false
-          
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-      
-      - name: Build site
-        run: pnpm run build
-      
-      - name: Deploy to pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: pages # 部署到pages分支
-          folder: dist # Astro默认构建输出目录
-          clean: true # 清理目标分支中的旧文件
+          server: ${{ secrets.IP }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ./public_html/
+          dangerous-clean-slate: true
