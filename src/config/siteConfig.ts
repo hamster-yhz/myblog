@@ -10,7 +10,7 @@ export const siteConfig: SiteConfig = {
   description:
     "一个记录生活与技术的博客，欢迎来到哈基米的世界！",
   keywords: [
-    "yblog",
+    "myblog",
     "hamster-yhz",
     "Astro",
     "博客",
