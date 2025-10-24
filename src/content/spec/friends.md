@@ -10,16 +10,15 @@ description: "与优秀的朋友们一起成长"
 申请友链前请先在自己网站添加本站友链，请使用以下信息：
 
 ```yaml
-站点名称: 夏夜流萤
+站点名称: MyBlog
 站点描述: 总有一场相遇，是互相喜欢的！
-站点链接: https://blog.cuteleaf.cn
-头像链接: https://q.qlogo.cn/headimg_dl?dst_uin=7618557&spec=640&img_type=jpg
+站点链接: https://myblog.vn.kg
 
 ```
 
 ## ✉️申请友链
 
-请将您的网站信息发送邮件至：`xxx@xxx.com`
+请将您的网站信息发送邮件至：`email@655353.xyz`
 
 **邮件标题**：`友链申请 - [您的站点名称]`
 
